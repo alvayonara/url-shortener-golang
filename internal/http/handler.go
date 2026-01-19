@@ -50,3 +50,21 @@ func (h *Handler) Shorten(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(resp)
 }
+
+func (h *Handler) Redirect(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+	code := r.URL.Path[1:]
+	if code == "" {
+		http.NotFound(w, r)
+		return
+	}
+	link, ok := h.service.Resolve(code)
+	if !ok {
+		http.NotFound(w, r)
+		return
+	}
+	http.Redirect(w, r, link.URL, http.StatusFound)
+}

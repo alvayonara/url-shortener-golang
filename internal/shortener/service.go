@@ -45,3 +45,7 @@ func (s *Service) Create(url string) (models.Link, error) {
 		return link, nil
 	}
 }
+
+func (s *Service) Resolve(code string) (models.Link, bool) {
+	return s.store.Get(code)
+}

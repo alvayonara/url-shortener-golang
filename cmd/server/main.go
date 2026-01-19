@@ -17,6 +17,7 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/health", healthHandler)
 	mux.HandleFunc("/shorten", handler.Shorten)
+	mux.HandleFunc("/", handler.Redirect)
 
 	fmt.Println("Server running properly.")
 	log.Fatal(http.ListenAndServe(":8080", mux))
