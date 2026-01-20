@@ -3,8 +3,6 @@
 A simple URL shortener written in Go.  
 This project was built to learn Go by building real backend service.  
 
----
-
 ## What this project does
 
 - Create short URLs
@@ -12,16 +10,12 @@ This project was built to learn Go by building real backend service.
 - Store data in MySQL
 - Keep the code easy to extend and reason about
 
----
-
 ## How it works
 
 The application is split into three main layers:
 - HTTP layer handles requests and responses
 - Service layer contains business logic
 - Store layer handles data persistence
-
----
 
 ## API
 
@@ -49,8 +43,6 @@ Response:
 302 Found
 Location: https://alvayonara.com
 ```
-
----
 
 ## MySQL setup
 Create database and table:
