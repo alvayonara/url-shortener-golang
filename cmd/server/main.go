@@ -10,7 +10,13 @@ import (
 )
 
 func main() {
-	store := store.NewMemoryStore()
+	store, err := store.NewMySQLStore(
+		"root:root@tcp(localhost:3306)/url_shortener",
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	//store := store.NewMemoryStore() --> in-memory approach
 	service := shortener.NewService(store)
 	handler := httpHandler.NewHandler(service)
 
