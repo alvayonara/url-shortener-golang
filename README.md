@@ -1,7 +1,6 @@
 # Go URL Shortener
 
 A simple URL shortener written in Go.  
-This project was built to learn Go by building real backend service.  
 
 ## What this project does
 
